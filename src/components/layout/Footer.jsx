@@ -12,7 +12,7 @@ export default function Footer() {
                         <p className="mt-4 text-blue-100 leading-7">
                             Expert coaching and home tuition for 9th, 10th, 11th and 12th
                             students in Mumbai. Special guidance for Maths, Physics and
-                            Science with personalized attention.
+                            with personalized attention.
                         </p>
                     </div>
 
@@ -59,7 +59,7 @@ export default function Footer() {
                         <div className="space-y-4 text-blue-100">
                             <p className="flex items-center gap-3">
                                 <Phone size={18} />
-                                +91 99999 99999
+                                +91 80972 53596
                             </p>
                             <p className="flex items-center gap-3">
                                 <Mail size={18} />

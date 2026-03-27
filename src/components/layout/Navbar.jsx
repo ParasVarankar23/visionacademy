@@ -1,14 +1,14 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { GraduationCap, Menu, Phone, X } from "lucide-react";
 import Link from "next/link";
-import { Menu, X, Phone, GraduationCap } from "lucide-react";
+import { useEffect, useState } from "react";
 
 const navLinks = [
     { name: "Home", href: "/" },
     { name: "About", href: "/about" },
     { name: "Courses", href: "/courses" },
-    { name: "Home Tuition", href: "/home-tuition-mumbai" },
+    { name: "Classes", href: "/classes" },
     { name: "Results", href: "/results" },
     { name: "Contact", href: "/contact" },
 ];
@@ -42,11 +42,11 @@ export default function Navbar() {
                             Admissions Open
                         </span>
                         <a
-                            href="tel:+919999999999"
+                            href="tel:+9180972535969"
                             className="flex items-center gap-2 hover:text-amber-300 transition"
                         >
                             <Phone size={14} />
-                            +91 99999 99999
+                            +91 80972 53596
                         </a>
                     </div>
                 </div>
@@ -55,8 +55,8 @@ export default function Navbar() {
             {/* Main Navbar */}
             <header
                 className={`sticky top-0 z-50 w-full transition-all duration-300 ${isScrolled
-                        ? "bg-white/95 backdrop-blur-md shadow-lg"
-                        : "bg-white shadow-sm"
+                    ? "bg-white/95 backdrop-blur-md shadow-lg"
+                    : "bg-white shadow-sm"
                     }`}
             >
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -71,7 +71,7 @@ export default function Navbar() {
                                     Vision Academy
                                 </span>
                                 <span className="text-xs sm:text-sm text-gray-600 font-medium">
-                                    Maths • Physics • Science
+                                    Maths • Physics
                                 </span>
                             </div>
                         </Link>
@@ -93,7 +93,7 @@ export default function Navbar() {
                         {/* Desktop Buttons */}
                         <div className="hidden lg:flex items-center gap-3">
                             <a
-                                href="tel:+919999999999"
+                                href="tel:+9180972535969"
                                 className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl border border-blue-200 text-blue-800 font-semibold hover:bg-blue-50 transition"
                             >
                                 <Phone size={18} />
@@ -140,7 +140,7 @@ export default function Navbar() {
 
                         <div className="mt-4 flex flex-col gap-3">
                             <a
-                                href="tel:+919999999999"
+                                href="tel:+9180972535969"
                                 className="w-full inline-flex items-center justify-center gap-2 px-4 py-3 rounded-xl border border-blue-200 text-blue-800 font-semibold hover:bg-blue-50 transition"
                             >
                                 <Phone size={18} />
