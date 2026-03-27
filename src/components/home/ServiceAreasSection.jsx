@@ -1,8 +1,8 @@
 "use client";
 
+import { motion } from "framer-motion";
 import { MapPin, Phone } from "lucide-react";
 import Link from "next/link";
-import { motion } from "framer-motion";
 
 const serviceAreas = [
     "Vile Parle",
@@ -155,7 +155,7 @@ export default function ServiceAreasSection() {
                             >
                                 <motion.a
                                     variants={fadeUp}
-                                    href="tel:+9180972535969"
+                                    href="tel:+918097253596"
                                     whileHover={{ scale: 1.02 }}
                                     whileTap={{ scale: 0.98 }}
                                     className="w-full inline-flex items-center justify-center gap-3 px-6 py-5 rounded-3xl bg-amber-500 text-white text-lg font-semibold hover:bg-amber-600 transition shadow-lg"

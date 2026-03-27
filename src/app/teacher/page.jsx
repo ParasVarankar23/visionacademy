@@ -26,7 +26,7 @@ export default function Page() {
             {/* Left Side - Teacher Image */}
             <div className="relative w-full h-[400px] sm:h-[500px] md:h-full min-h-[420px]">
               <Image
-                src="/teacher/teacher.jpg"
+                src="/teacher/teacher.jpeg"
                 alt="Teacher"
                 fill
                 className="object-cover"
@@ -40,7 +40,7 @@ export default function Page() {
               </span>
 
               <h2 className="text-3xl sm:text-4xl font-bold text-slate-900">
-                Prof. Vishal Bhirhadi
+                Prof. Vishal Sir
               </h2>
 
               <p className="mt-4 text-slate-600 text-base sm:text-lg leading-relaxed">
@@ -73,23 +73,6 @@ export default function Page() {
                 </div>
               </div>
 
-              {/* Extra Info */}
-              <div className="mt-8 space-y-3">
-                <p className="text-slate-700 text-base sm:text-lg">
-                  <span className="font-semibold text-slate-900">Subjects:</span>{" "}
-                  Mathematics, Physics
-                </p>
-
-                <p className="text-slate-700 text-base sm:text-lg">
-                  <span className="font-semibold text-slate-900">Classes:</span>{" "}
-                  9th, 10th, 11th, 12th
-                </p>
-
-                <p className="text-slate-700 text-base sm:text-lg">
-                  <span className="font-semibold text-slate-900">Teaching Mode:</span>{" "}
-                  Home Tuition / Personalized Coaching
-                </p>
-              </div>
             </div>
           </div>
         </div>

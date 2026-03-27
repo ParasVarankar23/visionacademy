@@ -42,7 +42,7 @@ export default function Navbar() {
                             Admissions Open
                         </span>
                         <a
-                            href="tel:+9180972535969"
+                            href="tel:+918097253596"
                             className="flex items-center gap-2 hover:text-amber-300 transition"
                         >
                             <Phone size={14} />
@@ -93,7 +93,7 @@ export default function Navbar() {
                         {/* Desktop Buttons */}
                         <div className="hidden lg:flex items-center gap-3">
                             <a
-                                href="tel:+9180972535969"
+                                href="tel:+918097253596"
                                 className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl border border-blue-200 text-blue-800 font-semibold hover:bg-blue-50 transition"
                             >
                                 <Phone size={18} />
@@ -140,7 +140,7 @@ export default function Navbar() {
 
                         <div className="mt-4 flex flex-col gap-3">
                             <a
-                                href="tel:+9180972535969"
+                                href="tel:+918097253596"
                                 className="w-full inline-flex items-center justify-center gap-2 px-4 py-3 rounded-xl border border-blue-200 text-blue-800 font-semibold hover:bg-blue-50 transition"
                             >
                                 <Phone size={18} />

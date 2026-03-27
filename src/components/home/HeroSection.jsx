@@ -141,7 +141,7 @@ export default function HeroSection() {
                             </Link>
 
                             <a
-                                href="tel:+9180972535969"
+                                href="tel:+918097253596"
                                 className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-2xl border border-blue-200 bg-white text-blue-900 font-semibold text-sm hover:bg-blue-50 hover:-translate-y-0.5 transition duration-300"
                             >
                                 <Phone className="w-5 h-5" />

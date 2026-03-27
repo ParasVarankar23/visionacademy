@@ -1,8 +1,8 @@
 "use client";
 
+import { motion } from "framer-motion";
 import { ArrowRight, Phone } from "lucide-react";
 import Link from "next/link";
-import { motion } from "framer-motion";
 
 export default function FinalCTA() {
     return (
@@ -75,7 +75,7 @@ export default function FinalCTA() {
                         whileTap={{ scale: 0.98 }}
                     >
                         <a
-                            href="tel:+9180972535969"
+                            href="tel:+918097253596"
                             className="inline-flex items-center justify-center gap-2 px-7 py-4 rounded-2xl border border-white/20 bg-white/10 text-white font-semibold text-lg hover:bg-white/20 transition"
                         >
                             <motion.span

@@ -1,17 +1,16 @@
 "use client";
 
-import Link from "next/link";
-import {
-    GraduationCap,
-    CheckCircle,
-    ArrowRight,
-    Phone,
-    BookOpen,
-    Star,
-    Target,
-    School,
-} from "lucide-react";
 import { motion } from "framer-motion";
+import {
+    ArrowRight,
+    BookOpen,
+    CheckCircle,
+    Phone,
+    School,
+    Star,
+    Target
+} from "lucide-react";
+import Link from "next/link";
 
 const fadeUp = {
     hidden: { opacity: 0, y: 28 },
@@ -142,7 +141,7 @@ export default function AboutHero() {
                             </Link>
 
                             <a
-                                href="tel:+9180972535969"
+                                href="tel:+918097253596"
                                 className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-2xl border border-blue-200 bg-white text-blue-900 font-semibold text-sm hover:bg-blue-50 hover:-translate-y-0.5 transition duration-300"
                             >
                                 <Phone className="w-5 h-5" />

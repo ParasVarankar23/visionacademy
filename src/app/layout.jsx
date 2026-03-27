@@ -2,6 +2,8 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
+import CookieConsent from "@/components/CookieConsent";
+import FloatingChatButton from "@/components/FloatingChatButton";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -24,13 +26,17 @@ export default function RootLayout({ children }) {
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased scroll-smooth`}
     >
-      <body className="flex flex-col bg-white text-gray-900">
+      <body className="flex min-h-screen flex-col bg-white text-gray-900">
         <Navbar />
 
-        {/* IMPORTANT: padding-top for fixed navbar */}
-        <main>{children}</main>
+        {/* Main Content */}
+        <main className="flex-1">{children}</main>
 
         <Footer />
+
+        {/* Global Components */}
+        <CookieConsent />
+        <FloatingChatButton />
       </body>
     </html>
   );
