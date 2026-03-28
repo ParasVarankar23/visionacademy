@@ -1,7 +1,7 @@
 "use client";
 
+import { useState } from "react";
 import { motion } from "framer-motion";
-import { useState, useEffect } from "react";
 
 export default function Page() {
     const [formData, setFormData] = useState({
@@ -15,89 +15,104 @@ export default function Page() {
         message: "",
     });
 
+    const [errors, setErrors] = useState({});
+
+    // Handle normal fields
     const handleChange = (e) => {
+        const { name, value } = e.target;
+
         setFormData((prev) => ({
             ...prev,
-            [e.target.name]: e.target.value,
+            [name]: value,
+        }));
+
+        setErrors((prev) => ({
+            ...prev,
+            [name]: "",
         }));
     };
 
-    const getSubjectOptions = (studentClass) => {
-        if (!studentClass) return ["Mathematics", "Physics", "Physics + Mathematics"];
+    // Only alphabets for names
+    const handleNameChange = (e) => {
+        const { name, value } = e.target;
 
-        const cls = studentClass.toLowerCase();
+        if (/^[A-Za-z\s]*$/.test(value)) {
+            setFormData((prev) => ({
+                ...prev,
+                [name]: value,
+            }));
 
-        if (cls.includes("9th") || cls.includes("10th")) {
-            return ["Mathematics"];
+            setErrors((prev) => ({
+                ...prev,
+                [name]: "",
+            }));
         }
-
-        if (cls.includes("physics only")) {
-            return ["Physics"];
-        }
-
-        if (cls.includes("mathematics only")) {
-            return ["Mathematics"];
-        }
-
-        if (cls.includes("11th") || cls.includes("12th")) {
-            return ["Mathematics", "Physics", "Physics + Mathematics"];
-        }
-
-        return ["Mathematics", "Physics", "Physics + Mathematics"];
     };
 
-    // Reset subject if class changes and current subject becomes invalid
-    useEffect(() => {
-        const options = getSubjectOptions(formData.studentClass);
-        if (formData.subject && !options.includes(formData.subject)) {
-            setFormData((prev) => ({ ...prev, subject: "" }));
+    // Only numbers for phone, max 10 digits
+    const handlePhoneChange = (e) => {
+        const value = e.target.value;
+
+        if (/^\d*$/.test(value) && value.length <= 10) {
+            setFormData((prev) => ({
+                ...prev,
+                phoneNumber: value,
+            }));
+
+            setErrors((prev) => ({
+                ...prev,
+                phoneNumber: "",
+            }));
         }
-    }, [formData.studentClass]);
+    };
 
-    const validateForm = (data) => {
-        const nameRegex = /^[A-Za-z\s]{2,}$/;
-        const phoneRegex = /^[0-9]{10}$/;
+    const validateForm = () => {
+        const newErrors = {};
+        const nameRegex = /^[A-Za-z\s]+$/;
 
-        if (!data.studentName || !nameRegex.test(data.studentName.trim())) {
-            return { valid: false, message: "Please enter a valid student name." };
-        }
-
-        if (!data.parentName || !nameRegex.test(data.parentName.trim())) {
-            return { valid: false, message: "Please enter a valid parent name." };
-        }
-
-        if (!data.phoneNumber || !phoneRegex.test(data.phoneNumber.trim())) {
-            return { valid: false, message: "Please enter a valid 10-digit phone number." };
-        }
-
-        if (!data.studentClass) {
-            return { valid: false, message: "Please select a class." };
-        }
-
-        if (!data.tuitionType) {
-            return { valid: false, message: "Please select tuition type." };
+        if (!formData.studentName.trim()) {
+            newErrors.studentName = "Student name is required.";
+        } else if (!nameRegex.test(formData.studentName.trim())) {
+            newErrors.studentName = "Student name should contain only alphabets.";
         }
 
-        if (!data.subject) {
-            return { valid: false, message: "Please select a subject." };
+        if (!formData.parentName.trim()) {
+            newErrors.parentName = "Parent name is required.";
+        } else if (!nameRegex.test(formData.parentName.trim())) {
+            newErrors.parentName = "Parent name should contain only alphabets.";
         }
 
-        if (!data.preferredDate) {
-            return { valid: false, message: "Please select a preferred date." };
+        if (!formData.phoneNumber.trim()) {
+            newErrors.phoneNumber = "Phone number is required.";
+        } else if (!/^\d{10}$/.test(formData.phoneNumber)) {
+            newErrors.phoneNumber = "Phone number must be exactly 10 digits.";
         }
 
-        return { valid: true };
+        if (!formData.studentClass) {
+            newErrors.studentClass = "Please select a class.";
+        }
+
+        if (!formData.tuitionType) {
+            newErrors.tuitionType = "Please select tuition type.";
+        }
+
+        if (!formData.subject) {
+            newErrors.subject = "Please select a subject.";
+        }
+
+        if (!formData.preferredDate) {
+            newErrors.preferredDate = "Please select a preferred date.";
+        }
+
+        setErrors(newErrors);
+
+        return Object.keys(newErrors).length === 0;
     };
 
     const handleWhatsAppSubmit = (e) => {
         e.preventDefault();
 
-        const validation = validateForm(formData);
-
-        if (!validation.valid) {
-            alert(validation.message);
-            return;
-        }
+        if (!validateForm()) return;
 
         const {
             studentName,
@@ -110,25 +125,21 @@ export default function Page() {
             message,
         } = formData;
 
-        // Your WhatsApp number (with country code, no + sign)
         const whatsappNumber = "918097253596";
 
-        const whatsappMessage = `Hello Vision Academy,
+        const whatsappMessage =
+            `Hello Vision Academy,%0A%0A` +
+            `I want to book a FREE Demo Class.%0A%0A` +
+            `Student Name: ${studentName}%0A` +
+            `Parent Name: ${parentName}%0A` +
+            `Phone Number: ${phoneNumber}%0A` +
+            `Class: ${studentClass}%0A` +
+            `Tuition Type: ${tuitionType}%0A` +
+            `Subject: ${subject}%0A` +
+            `Preferred Date: ${preferredDate}%0A` +
+            `Message: ${message || "N/A"}`;
 
-I want to book a FREE Demo Class.
-
-Student Name: ${studentName}
-Parent Name: ${parentName}
-Phone Number: ${phoneNumber}
-Class: ${studentClass}
-Tuition Type: ${tuitionType}
-Subject: ${subject}
-Preferred Date: ${preferredDate}
-Message: ${message || "N/A"}`;
-
-        const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
-            whatsappMessage
-        )}`;
+        const whatsappURL = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
 
         window.open(whatsappURL, "_blank");
     };
@@ -143,7 +154,7 @@ Message: ${message || "N/A"}`;
                     transition={{ duration: 0.5 }}
                     className="text-amber-500 font-semibold uppercase tracking-[0.22em] text-sm"
                 >
-                    Our Demo Classes
+                    Book Free Demo
                 </motion.p>
 
                 <motion.h1
@@ -161,8 +172,8 @@ Message: ${message || "N/A"}`;
                     transition={{ duration: 0.9 }}
                     className="mt-4 text-slate-600 text-base sm:text-lg leading-relaxed max-w-3xl mx-auto"
                 >
-                    Fill in the details below and send your request directly on WhatsApp to
-                    book a free demo class with Vision Academy.
+                    Fill in the details below and send your request directly on WhatsApp
+                    to book a free demo class with Vision Academy.
                 </motion.p>
             </div>
 
@@ -190,9 +201,15 @@ Message: ${message || "N/A"}`;
                                     name="studentName"
                                     placeholder="Enter student name"
                                     value={formData.studentName}
-                                    onChange={handleChange}
-                                    className="w-full h-14 rounded-2xl border border-slate-200 px-4 sm:px-5 text-base outline-none focus:border-amber-500 focus:ring-4 focus:ring-amber-100 transition"
+                                    onChange={handleNameChange}
+                                    className={`w-full h-14 rounded-2xl border px-4 sm:px-5 text-base outline-none transition ${errors.studentName
+                                            ? "border-red-400 focus:ring-4 focus:ring-red-100"
+                                            : "border-slate-200 focus:border-amber-500 focus:ring-4 focus:ring-amber-100"
+                                        }`}
                                 />
+                                {errors.studentName && (
+                                    <p className="text-red-500 text-sm mt-2">{errors.studentName}</p>
+                                )}
                             </div>
 
                             <div>
@@ -204,9 +221,15 @@ Message: ${message || "N/A"}`;
                                     name="parentName"
                                     placeholder="Enter parent name"
                                     value={formData.parentName}
-                                    onChange={handleChange}
-                                    className="w-full h-14 rounded-2xl border border-slate-200 px-4 sm:px-5 text-base outline-none focus:border-amber-500 focus:ring-4 focus:ring-amber-100 transition"
+                                    onChange={handleNameChange}
+                                    className={`w-full h-14 rounded-2xl border px-4 sm:px-5 text-base outline-none transition ${errors.parentName
+                                            ? "border-red-400 focus:ring-4 focus:ring-red-100"
+                                            : "border-slate-200 focus:border-amber-500 focus:ring-4 focus:ring-amber-100"
+                                        }`}
                                 />
+                                {errors.parentName && (
+                                    <p className="text-red-500 text-sm mt-2">{errors.parentName}</p>
+                                )}
                             </div>
                         </div>
 
@@ -219,12 +242,17 @@ Message: ${message || "N/A"}`;
                                 <input
                                     type="tel"
                                     name="phoneNumber"
-                                    placeholder="Enter phone number"
+                                    placeholder="Enter 10-digit phone number"
                                     value={formData.phoneNumber}
-                                    onChange={handleChange}
-                                    maxLength={10}
-                                    className="w-full h-14 rounded-2xl border border-slate-200 px-4 sm:px-5 text-base outline-none focus:border-amber-500 focus:ring-4 focus:ring-amber-100 transition"
+                                    onChange={handlePhoneChange}
+                                    className={`w-full h-14 rounded-2xl border px-4 sm:px-5 text-base outline-none transition ${errors.phoneNumber
+                                            ? "border-red-400 focus:ring-4 focus:ring-red-100"
+                                            : "border-slate-200 focus:border-amber-500 focus:ring-4 focus:ring-amber-100"
+                                        }`}
                                 />
+                                {errors.phoneNumber && (
+                                    <p className="text-red-500 text-sm mt-2">{errors.phoneNumber}</p>
+                                )}
                             </div>
 
                             <div>
@@ -235,7 +263,10 @@ Message: ${message || "N/A"}`;
                                     name="studentClass"
                                     value={formData.studentClass}
                                     onChange={handleChange}
-                                    className="w-full h-14 rounded-2xl border border-slate-200 px-4 sm:px-5 text-base outline-none focus:border-amber-500 focus:ring-4 focus:ring-amber-100 transition bg-white"
+                                    className={`w-full h-14 rounded-2xl border px-4 sm:px-5 text-base outline-none transition bg-white ${errors.studentClass
+                                            ? "border-red-400 focus:ring-4 focus:ring-red-100"
+                                            : "border-slate-200 focus:border-amber-500 focus:ring-4 focus:ring-amber-100"
+                                        }`}
                                 >
                                     <option value="">Choose Class</option>
                                     <option value="9th Standard">9th Standard</option>
@@ -255,6 +286,9 @@ Message: ${message || "N/A"}`;
                                         11th & 12th Combined (Mathematics Only)
                                     </option>
                                 </select>
+                                {errors.studentClass && (
+                                    <p className="text-red-500 text-sm mt-2">{errors.studentClass}</p>
+                                )}
                             </div>
                         </div>
 
@@ -268,13 +302,19 @@ Message: ${message || "N/A"}`;
                                     name="tuitionType"
                                     value={formData.tuitionType}
                                     onChange={handleChange}
-                                    className="w-full h-14 rounded-2xl border border-slate-200 px-4 sm:px-5 text-base outline-none focus:border-amber-500 focus:ring-4 focus:ring-amber-100 transition bg-white"
+                                    className={`w-full h-14 rounded-2xl border px-4 sm:px-5 text-base outline-none transition bg-white ${errors.tuitionType
+                                            ? "border-red-400 focus:ring-4 focus:ring-red-100"
+                                            : "border-slate-200 focus:border-amber-500 focus:ring-4 focus:ring-amber-100"
+                                        }`}
                                 >
                                     <option value="">Choose Tuition Type</option>
                                     <option value="Home Tuition">Home Tuition</option>
                                     <option value="Online Tuition">Online Tuition</option>
                                     <option value="Offline Batch">Offline Batch</option>
                                 </select>
+                                {errors.tuitionType && (
+                                    <p className="text-red-500 text-sm mt-2">{errors.tuitionType}</p>
+                                )}
                             </div>
 
                             <div>
@@ -285,15 +325,19 @@ Message: ${message || "N/A"}`;
                                     name="subject"
                                     value={formData.subject}
                                     onChange={handleChange}
-                                    className="w-full h-14 rounded-2xl border border-slate-200 px-4 sm:px-5 text-base outline-none focus:border-amber-500 focus:ring-4 focus:ring-amber-100 transition bg-white"
+                                    className={`w-full h-14 rounded-2xl border px-4 sm:px-5 text-base outline-none transition bg-white ${errors.subject
+                                            ? "border-red-400 focus:ring-4 focus:ring-red-100"
+                                            : "border-slate-200 focus:border-amber-500 focus:ring-4 focus:ring-amber-100"
+                                        }`}
                                 >
                                     <option value="">Choose Subject</option>
-                                    {getSubjectOptions(formData.studentClass).map((subject) => (
-                                        <option key={subject} value={subject}>
-                                            {subject}
-                                        </option>
-                                    ))}
+                                    <option value="Mathematics">Mathematics</option>
+                                    <option value="Physics">Physics</option>
+                                    <option value="Physics + Mathematics">Physics + Mathematics</option>
                                 </select>
+                                {errors.subject && (
+                                    <p className="text-red-500 text-sm mt-2">{errors.subject}</p>
+                                )}
                             </div>
                         </div>
 
@@ -308,8 +352,14 @@ Message: ${message || "N/A"}`;
                                     name="preferredDate"
                                     value={formData.preferredDate}
                                     onChange={handleChange}
-                                    className="w-full h-14 rounded-2xl border border-slate-200 px-4 sm:px-5 text-base outline-none focus:border-amber-500 focus:ring-4 focus:ring-amber-100 transition"
+                                    className={`w-full h-14 rounded-2xl border px-4 sm:px-5 text-base outline-none transition ${errors.preferredDate
+                                            ? "border-red-400 focus:ring-4 focus:ring-red-100"
+                                            : "border-slate-200 focus:border-amber-500 focus:ring-4 focus:ring-amber-100"
+                                        }`}
                                 />
+                                {errors.preferredDate && (
+                                    <p className="text-red-500 text-sm mt-2">{errors.preferredDate}</p>
+                                )}
                             </div>
 
                             <div>
