@@ -145,7 +145,7 @@ export default function Page() {
     };
 
     return (
-        <section className="pt-24 sm:pt-28 pb-14 sm:pb-16 bg-gradient-to-b from-white via-amber-50/40 to-white px-4 sm:px-6 lg:px-8">
+        <section className="pt-24 sm:pt-28 pb-14 sm:pb-16 bg-gradient-to-b from-white via-amber-50/40 to-white px-4 sm:px-6 lg:px-8 py-4 md:py-10">
             {/* Heading */}
             <div className="max-w-4xl mx-auto text-center">
                 <motion.p
