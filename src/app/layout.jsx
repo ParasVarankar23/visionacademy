@@ -36,7 +36,7 @@ export default function RootLayout({ children }) {
 
         {/* Global Components */}
         <CookieConsent />
-        <FloatingChatButton />
+        {/* <FloatingChatButton /> */}
       </body>
     </html>
   );
