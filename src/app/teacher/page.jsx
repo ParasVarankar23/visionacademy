@@ -1,82 +1,129 @@
-import Image from "next/image";
+import TeacherPage from "@/components/teacher/TeacherPage";
+
+export const metadata = {
+  metadataBase: new URL("https://visionacademy-iota.vercel.app"),
+  title: "Meet Vishal Sir | Best Maths & Physics Teacher in Vile Parle | Vision Academy",
+  description:
+    "Meet Vishal Sir at Vision Academy. Experienced Maths and Physics teacher providing home tuition and coaching in Vile Parle, Mumbai for 9th, 10th, 11th and 12th students.",
+  keywords: [
+    "Vishal Sir",
+    "Vision Academy teacher",
+    "best maths teacher in vile parle",
+    "best physics teacher in vile parle",
+    "home tutor teacher in vile parle",
+    "maths tutor Vishal Sir",
+    "physics tutor Vishal Sir",
+    "teacher profile Vision Academy",
+    "home tuition teacher mumbai",
+    "Vile Parle tutor",
+  ],
+  alternates: {
+    canonical: "/teacher",
+  },
+  openGraph: {
+    title: "Meet Vishal Sir | Best Maths & Physics Teacher in Vile Parle | Vision Academy",
+    description:
+      "Learn more about Vishal Sir, expert Maths & Physics teacher at Vision Academy in Vile Parle, Mumbai.",
+    url: "https://visionacademy-iota.vercel.app/teacher",
+    siteName: "Vision Academy",
+    images: [
+      {
+        url: "/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Vishal Sir - Vision Academy Teacher",
+      },
+    ],
+    locale: "en_IN",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Meet Vishal Sir | Vision Academy",
+    description:
+      "Experienced Maths & Physics teacher in Vile Parle, Mumbai for 9th to 12th students.",
+    images: ["/og-image.jpg"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+};
 
 export default function Page() {
+  const teacherPageSchema = {
+    "@context": "https://schema.org",
+    "@type": "ProfilePage",
+    name: "Vishal Sir - Vision Academy Teacher",
+    url: "https://visionacademy-iota.vercel.app/teacher",
+    description:
+      "Profile page for Vishal Sir, experienced Maths and Physics teacher at Vision Academy in Vile Parle, Mumbai.",
+  };
+
+  const personSchema = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    name: "Vishal Sir",
+    jobTitle: "Maths and Physics Teacher",
+    worksFor: {
+      "@type": "EducationalOrganization",
+      name: "Vision Academy",
+    },
+    description:
+      "Experienced Maths and Physics teacher providing home tuition and coaching in Vile Parle, Mumbai for 9th, 10th, 11th and 12th students.",
+  };
+
+  const organizationSchema = {
+    "@context": "https://schema.org",
+    "@type": "EducationalOrganization",
+    name: "Vision Academy",
+    url: "https://visionacademy-iota.vercel.app",
+    logo: "https://visionacademy-iota.vercel.app/og-image.jpg",
+    image: "https://visionacademy-iota.vercel.app/og-image.jpg",
+    telephone: "+91 8097253596",
+    email: "visionacademy@gmail.com",
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: "Vile Parle",
+      addressRegion: "Maharashtra",
+      addressCountry: "IN",
+    },
+    areaServed: [
+      "Vile Parle",
+      "Andheri",
+      "Santacruz",
+      "Juhu",
+      "Mumbai",
+    ],
+    description:
+      "Vision Academy provides home tuition and coaching for 9th, 10th, 11th and 12th students in Vile Parle, Mumbai. Maths and Physics guidance by Vishal Sir.",
+    sameAs: [
+      "https://www.instagram.com/visionacademyhometutor",
+      "https://www.facebook.com/visionacademyhometutor",
+      "https://www.youtube.com/@visionacademyhometutor",
+      "https://wa.me/918097253596",
+    ],
+  };
+
   return (
-    <section className="bg-gradient-to-b from-white via-amber-50/40 to-white px-4 sm:px-6 lg:px-8 py-4 md:py-10">
-      <div className="max-w-6xl mx-auto">
-        {/* Heading */}
-        <div className="text-center mb-12">
-          <p className="text-amber-500 font-semibold uppercase tracking-[0.2em] text-sm sm:text-base">
-            Our Teacher
-          </p>
+    <>
+      {/* JSON-LD Structured Data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(teacherPageSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+      />
 
-          <h1 className="mt-3 text-3xl sm:text-4xl md:text-5xl font-bold text-slate-900 leading-tight">
-            Meet Our Expert Educator
-          </h1>
-
-          <p className="mt-4 text-slate-600 text-base sm:text-lg max-w-3xl mx-auto leading-relaxed">
-            At Vision Academy, students receive expert guidance with strong
-            concept clarity, personal attention, and result-oriented teaching.
-          </p>
-        </div>
-
-        {/* Teacher Card */}
-        <div className="bg-white rounded-3xl shadow-xl border border-amber-100 overflow-hidden">
-          <div className="grid grid-cols-1 md:grid-cols-2 items-center">
-            {/* Left Side - Teacher Image */}
-            <div className="relative w-full h-[400px] sm:h-[500px] md:h-full min-h-[420px]">
-              <Image
-                src="/teacher/teacher.jpeg"
-                alt="Teacher"
-                fill
-                className="object-cover"
-              />
-            </div>
-
-            {/* Right Side - Teacher Details */}
-            <div className="p-6 sm:p-8 md:p-10 lg:p-12">
-              <span className="inline-block bg-amber-100 text-amber-600 text-sm font-semibold px-4 py-2 rounded-full mb-4">
-                Mathematics & Physics Expert
-              </span>
-
-              <h2 className="text-3xl sm:text-4xl font-bold text-slate-900">
-                Prof. Vishal Sir
-              </h2>
-
-              <p className="mt-4 text-slate-600 text-base sm:text-lg leading-relaxed">
-                With a passion for teaching and a strong academic background,
-                Vishal Sir provides personalized coaching for students from 9th
-                to 12th standard. His teaching style focuses on deep concept
-                understanding, problem-solving skills, and excellent academic
-                results in Mathematics and Physics.
-              </p>
-
-              {/* Qualification Box */}
-              <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div className="bg-amber-50 border border-amber-100 rounded-2xl p-4">
-                  <p className="text-sm text-slate-500 font-medium">Qualification</p>
-                  <h3 className="mt-1 text-lg font-bold text-slate-900">B.Sc in Physic & Mathematics</h3>
-                </div>
-
-                <div className="bg-amber-50 border border-amber-100 rounded-2xl p-4">
-                  <p className="text-sm text-slate-500 font-medium">Qualification</p>
-                  <h3 className="mt-1 text-lg font-bold text-slate-900">M.Sc in Physics & Mathematics</h3>
-                </div>
-                <div className="bg-amber-50 border border-amber-100 rounded-2xl p-4">
-                  <p className="text-sm text-slate-500 font-medium">Qualification</p>
-                  <h3 className="mt-1 text-lg font-bold text-slate-900">B.Ed</h3>
-                </div>
-
-                <div className="bg-amber-50 border border-amber-100 rounded-2xl p-4">
-                  <p className="text-sm text-slate-500 font-medium">Experience</p>
-                  <h3 className="mt-1 text-lg font-bold text-slate-900">10 Years</h3>
-                </div>
-              </div>
-
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+      <main className="bg-white">
+        <TeacherPage />
+      </main>
+    </>
   );
 }
