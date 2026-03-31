@@ -86,7 +86,10 @@ export default function TestimonialsSection() {
     );
 
     return (
-        <section className="py-12 md:py-16 bg-amber-50 overflow-hidden">
+        <section
+            className="py-12 md:py-16 bg-amber-50 overflow-hidden"
+            aria-label="Testimonials section"
+        >
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 {/* Header */}
                 <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6">
@@ -102,12 +105,14 @@ export default function TestimonialsSection() {
                         </p>
 
                         <h2 className="mt-2 text-3xl md:text-2xl lg:text-4xl font-bold text-blue-950 leading-tight">
-                            What Parents & Students Say
+                            What Parents & Students Say About Vision Academy in Vile Parle
                         </h2>
 
                         <p className="mt-4 text-gray-600 leading-8 text-base md:text-lg">
-                            Trusted by students and parents for personalized teaching,
-                            regular practice, board preparation and better academic results.
+                            Trusted by parents and students in Vile Parle, Mumbai for
+                            personalized teaching, regular practice, board exam preparation and
+                            better academic results in 9th, 10th, 11th and 12th Maths &
+                            Physics.
                         </p>
                     </motion.div>
 
@@ -123,6 +128,7 @@ export default function TestimonialsSection() {
                             onClick={prevSlide}
                             className="w-14 h-14 rounded-full bg-white border border-amber-200 text-blue-900 flex items-center justify-center shadow-sm hover:bg-blue-900 hover:text-white transition duration-300"
                             aria-label="Previous testimonials"
+                            title="Previous Testimonials"
                         >
                             <ChevronLeft className="w-6 h-6" />
                         </button>
@@ -131,6 +137,7 @@ export default function TestimonialsSection() {
                             onClick={nextSlide}
                             className="w-14 h-14 rounded-full bg-white border border-amber-200 text-blue-900 flex items-center justify-center shadow-sm hover:bg-blue-900 hover:text-white transition duration-300"
                             aria-label="Next testimonials"
+                            title="Next Testimonials"
                         >
                             <ChevronRight className="w-6 h-6" />
                         </button>
@@ -202,6 +209,7 @@ export default function TestimonialsSection() {
                                     : "w-3 bg-blue-200 hover:bg-blue-400"
                                 }`}
                             aria-label={`Go to testimonial group ${index + 1}`}
+                            title={`Go to testimonial group ${index + 1}`}
                         />
                     ))}
                 </div>

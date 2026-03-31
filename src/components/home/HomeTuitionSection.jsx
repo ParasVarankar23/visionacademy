@@ -49,7 +49,10 @@ const cardVariants = {
 
 export default function HomeTuitionSection() {
     return (
-        <section className="py-10 md:py-12 bg-white overflow-hidden">
+        <section
+            className="py-10 md:py-12 bg-white overflow-hidden"
+            aria-label="Home tuition section"
+        >
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <motion.div
                     className="bg-gradient-to-r from-blue-900 to-blue-700 rounded-3xl p-8 sm:p-10 md:p-12 text-white overflow-hidden relative shadow-xl"
@@ -74,23 +77,31 @@ export default function HomeTuitionSection() {
                                 variants={fadeUp}
                                 className="text-amber-300 font-semibold uppercase tracking-wider text-sm sm:text-base"
                             >
-                                Home Tuition in Mumbai
+                                Home Tuition in Vile Parle & Mumbai
                             </motion.p>
 
                             <motion.h2
                                 variants={fadeUp}
                                 className="mt-3 text-2xl md:text-3xl lg:text-4xl font-bold leading-tight"
                             >
-                                Personalized Home Tuition for Better Understanding & Results
+                                Best Home Tutor in Vile Parle for 9th, 10th, 11th & 12th Students
                             </motion.h2>
 
                             <motion.p
                                 variants={fadeUp}
                                 className="mt-5 text-blue-100 leading-8 text-base sm:text-lg max-w-2xl"
                             >
-                                For students who need extra attention, one-to-one home tuition
-                                is available in Mumbai. This helps improve focus, confidence,
-                                concept clarity and academic performance.
+                                Vision Academy offers personalized home tuition in Vile Parle,
+                                Mumbai for students who need extra attention and better academic
+                                support. Vishal Sir provides expert guidance for
+                                <span className="font-semibold text-white"> 9th & 10th Maths</span>{" "}
+                                and
+                                <span className="font-semibold text-white">
+                                    {" "}
+                                    11th & 12th Maths & Physics
+                                </span>
+                                , helping students improve focus, confidence, concept clarity and
+                                board exam performance.
                             </motion.p>
                         </motion.div>
 
@@ -132,6 +143,8 @@ export default function HomeTuitionSection() {
                         <motion.div variants={fadeUp}>
                             <Link
                                 href="/classes"
+                                aria-label="Explore home tuition classes at Vision Academy"
+                                title="Explore Home Tuition"
                                 className="inline-flex items-center justify-center gap-2 px-6 py-4 rounded-2xl bg-amber-500 text-white text-sm sm:text-base font-semibold hover:bg-amber-600 transition"
                             >
                                 Explore Home Tuition
@@ -148,9 +161,31 @@ export default function HomeTuitionSection() {
                         <motion.div variants={fadeUp}>
                             <Link
                                 href="/contact"
+                                aria-label="Enquire now for home tuition in Vile Parle"
+                                title="Enquire Now"
                                 className="inline-flex items-center justify-center gap-2 px-6 py-4 rounded-2xl border border-white/20 bg-white/10 text-white text-sm sm:text-base font-semibold hover:bg-white/20 transition"
                             >
                                 Enquire Now
+                            </Link>
+                        </motion.div>
+                    </motion.div>
+
+                    {/* Internal SEO Link */}
+                    <motion.div
+                        className="relative z-10 mt-5"
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true, amount: 0.2 }}
+                        variants={containerVariants}
+                    >
+                        <motion.div variants={fadeUp}>
+                            <Link
+                                href="/vile-parle-home-tutor"
+                                className="text-sm sm:text-base font-medium text-amber-300 hover:text-amber-200 hover:underline"
+                                aria-label="Visit Vile Parle home tutor page"
+                                title="Vile Parle Home Tutor"
+                            >
+                                Looking for the best home tutor in Vile Parle? Explore our local tuition page
                             </Link>
                         </motion.div>
                     </motion.div>

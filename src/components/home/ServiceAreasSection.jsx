@@ -49,7 +49,10 @@ const cardVariants = {
 
 export default function ServiceAreasSection() {
     return (
-        <section className="py-5 md:py-10 bg-white overflow-hidden">
+        <section
+            className="py-5 md:py-10 bg-white overflow-hidden"
+            aria-label="Service areas section"
+        >
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="grid lg:grid-cols-2 gap-10 lg:gap-14 items-center">
                     {/* Left Content */}
@@ -70,16 +73,18 @@ export default function ServiceAreasSection() {
                             variants={fadeUp}
                             className="mt-3 text-2xl sm:text-3xl md:text-3xl font-bold text-blue-950 leading-tight"
                         >
-                            Available for Home Tuition Across Mumbai
+                            Home Tuition Available in Vile Parle and Nearby Areas in Mumbai
                         </motion.h2>
 
                         <motion.p
                             variants={fadeUp}
                             className="mt-6 text-gray-700 leading-8 text-base md:text-lg max-w-2xl"
                         >
-                            Vision Academy provides coaching and home tuition support for
-                            students across major areas in Mumbai depending on availability
-                            and batch timings.
+                            Vision Academy provides home tuition and coaching support for
+                            students in Vile Parle, Andheri, Santacruz, Juhu, Dadar and nearby
+                            areas in Mumbai, depending on availability and batch timings.
+                            Personalized guidance is available for 9th, 10th, 11th and 12th
+                            students in Maths and Physics by Vishal Sir.
                         </motion.p>
 
                         <motion.div
@@ -106,6 +111,18 @@ export default function ServiceAreasSection() {
                                     </span>
                                 </motion.div>
                             ))}
+                        </motion.div>
+
+                        {/* Internal SEO Link */}
+                        <motion.div variants={fadeUp} className="mt-6">
+                            <Link
+                                href="/vile-parle-home-tutor"
+                                className="text-sm sm:text-base font-medium text-blue-700 hover:text-blue-900 hover:underline"
+                                aria-label="Visit Vile Parle home tutor page"
+                                title="Vile Parle Home Tutor"
+                            >
+                                Looking for the best home tutor in Vile Parle? Explore our local tuition page
+                            </Link>
                         </motion.div>
                     </motion.div>
 
@@ -139,11 +156,15 @@ export default function ServiceAreasSection() {
                                 transition={{ delay: 0.2, duration: 0.5 }}
                                 className="mt-5 text-blue-100 leading-8 text-base md:text-lg"
                             >
-                                Book a free demo class and get personalized guidance for
-                                <span className="font-semibold text-white"> Maths </span>
+                                Book a free demo class with Vision Academy and get personalized
+                                guidance for
+                                <span className="font-semibold text-white"> 9th & 10th Maths</span>{" "}
                                 and
-                                <span className="font-semibold text-white"> Physics </span>
-                                for 9th to 12th standard students.
+                                <span className="font-semibold text-white">
+                                    {" "}
+                                    11th & 12th Maths & Physics
+                                </span>{" "}
+                                in Vile Parle and nearby Mumbai areas.
                             </motion.p>
 
                             <motion.div
@@ -158,6 +179,8 @@ export default function ServiceAreasSection() {
                                     href="tel:+918097253596"
                                     whileHover={{ scale: 1.02 }}
                                     whileTap={{ scale: 0.98 }}
+                                    aria-label="Call Vision Academy now at 8097253596"
+                                    title="Call Vision Academy"
                                     className="w-full inline-flex items-center justify-center gap-3 px-6 py-5 rounded-3xl bg-amber-500 text-white text-lg font-semibold hover:bg-amber-600 transition shadow-lg"
                                 >
                                     <Phone className="w-6 h-6" />
@@ -167,6 +190,8 @@ export default function ServiceAreasSection() {
                                 <motion.div variants={fadeUp}>
                                     <Link
                                         href="/book-demo"
+                                        aria-label="Book free demo class at Vision Academy"
+                                        title="Book Free Demo"
                                         className="w-full inline-flex items-center justify-center gap-2 px-6 py-5 rounded-3xl border border-white/15 bg-white/10 text-white text-lg font-semibold hover:bg-white/20 transition shadow-md"
                                     >
                                         Book Free Demo

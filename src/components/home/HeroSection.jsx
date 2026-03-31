@@ -18,7 +18,7 @@ const features = [
     "Weekly tests and progress tracking",
     "Board exam focused preparation",
     "Concept clarity + doubt solving",
-    "Flexible timings in Mumbai",
+    "Flexible timings in Vile Parle & Mumbai",
 ];
 
 const fadeUp = {
@@ -36,7 +36,10 @@ const fadeUp = {
 
 export default function HeroSection() {
     return (
-        <section className="relative overflow-hidden bg-gradient-to-br from-blue-50 via-white to-amber-50">
+        <section
+            className="relative overflow-hidden bg-gradient-to-br from-blue-50 via-white to-amber-50"
+            aria-label="Vision Academy hero section"
+        >
             {/* Background blur shapes */}
             <div className="absolute inset-0 pointer-events-none">
                 <motion.div
@@ -72,7 +75,7 @@ export default function HeroSection() {
                             className="inline-flex items-center gap-2 bg-blue-100 text-blue-800 px-4 py-2 rounded-full text-sm font-semibold mb-5"
                         >
                             <Star className="w-4 h-4 fill-current" />
-                            Admissions Open in Mumbai
+                            Admissions Open in Vile Parle & Mumbai
                         </motion.div>
 
                         {/* Heading */}
@@ -83,7 +86,7 @@ export default function HeroSection() {
                             custom={0.2}
                             className="text-3xl sm:text-4xl md:text-5xl lg:text-4xl font-extrabold text-blue-950 leading-tight tracking-tight max-w-3xl"
                         >
-                            Expert Home Tuition & Coaching for {" "}
+                            Best Home Tutor in Vile Parle for{" "}
                             <span className="text-amber-500">Maths & Physics</span>
                         </motion.h1>
 
@@ -95,11 +98,18 @@ export default function HeroSection() {
                             custom={0.3}
                             className="mt-4 text-sm sm:text-base text-gray-700 leading-7 max-w-2xl"
                         >
-                            Vision Academy offers professional coaching and home tuition for
-                            <span className="font-semibold text-blue-900"> 9th & 10th Maths</span> and
-                            <span className="font-semibold text-blue-900"> 11th & 12th Maths & Physics</span> in Mumbai,
-                            with personalized teaching, concept clarity, board preparation and regular test
-                            practice for better academic results.
+                            Vision Academy offers professional home tuition and coaching in{" "}
+                            <span className="font-semibold text-blue-900">Vile Parle, Mumbai</span>{" "}
+                            for students looking for strong academic support. Vishal Sir
+                            provides expert teaching for
+                            <span className="font-semibold text-blue-900"> 9th & 10th Maths</span>{" "}
+                            and
+                            <span className="font-semibold text-blue-900">
+                                {" "}
+                                11th & 12th Maths & Physics
+                            </span>
+                            , with concept clarity, board exam preparation, doubt solving and
+                            regular test practice for better results.
                         </motion.p>
 
                         {/* Features */}
@@ -134,6 +144,8 @@ export default function HeroSection() {
                         >
                             <Link
                                 href="/book-demo"
+                                aria-label="Book free demo class at Vision Academy"
+                                title="Book Free Demo Class"
                                 className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-2xl bg-amber-500 text-white font-semibold text-sm shadow-md hover:bg-amber-600 hover:-translate-y-0.5 transition duration-300"
                             >
                                 Book Free Demo
@@ -142,11 +154,31 @@ export default function HeroSection() {
 
                             <a
                                 href="tel:+918097253596"
+                                aria-label="Call Vision Academy now at 8097253596"
+                                title="Call Vision Academy"
                                 className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-2xl border border-blue-200 bg-white text-blue-900 font-semibold text-sm hover:bg-blue-50 hover:-translate-y-0.5 transition duration-300"
                             >
                                 <Phone className="w-5 h-5" />
                                 Call Now
                             </a>
+                        </motion.div>
+
+                        {/* SEO Internal Link */}
+                        <motion.div
+                            initial="hidden"
+                            animate="visible"
+                            variants={fadeUp}
+                            custom={0.6}
+                            className="mt-4"
+                        >
+                            <Link
+                                href="/vile-parle-home-tutor"
+                                className="text-sm font-medium text-blue-700 hover:text-blue-900 hover:underline"
+                                aria-label="Visit Vile Parle home tutor page"
+                                title="Vile Parle Home Tutor"
+                            >
+                                Looking for a home tutor in Vile Parle? Explore our local tuition page
+                            </Link>
                         </motion.div>
 
                         {/* Stats */}
@@ -160,15 +192,19 @@ export default function HeroSection() {
                             {[
                                 { title: "9th-12th", sub: "Classes Covered" },
                                 { title: "Home", sub: "Tuition Available" },
-                                { title: "Mumbai", sub: "Service Area" },
+                                { title: "Vile Parle", sub: "Primary Service Area" },
                             ].map((stat, index) => (
                                 <motion.div
                                     key={index}
                                     whileHover={{ y: -6 }}
                                     className="bg-white rounded-2xl shadow-sm border border-blue-100 p-3 text-center"
                                 >
-                                    <h3 className="text-base sm:text-lg font-bold text-blue-900">{stat.title}</h3>
-                                    <p className="text-xs sm:text-sm text-gray-600 mt-1">{stat.sub}</p>
+                                    <h3 className="text-base sm:text-lg font-bold text-blue-900">
+                                        {stat.title}
+                                    </h3>
+                                    <p className="text-xs sm:text-sm text-gray-600 mt-1">
+                                        {stat.sub}
+                                    </p>
                                 </motion.div>
                             ))}
                         </motion.div>
@@ -196,7 +232,7 @@ export default function HeroSection() {
                                         className="inline-flex items-center gap-2 bg-white/10 px-4 py-2 rounded-full text-sm mb-4 w-fit"
                                     >
                                         <BookOpen className="w-4 h-4" />
-                                        Trusted Learning Support
+                                        Trusted Learning Support by Vishal Sir
                                     </motion.div>
 
                                     {/* Title */}
@@ -216,9 +252,9 @@ export default function HeroSection() {
                                         transition={{ duration: 0.55, delay: 0.55 }}
                                         className="mt-3 text-blue-100 leading-6 text-xs sm:text-sm max-w-lg"
                                     >
-                                        Special coaching for school students with concept-based
-                                        teaching, doubt solving, revision sessions and regular
-                                        performance tracking.
+                                        Special coaching for school students in Vile Parle and Mumbai
+                                        with concept-based teaching, doubt solving, revision sessions
+                                        and regular performance tracking.
                                     </motion.p>
 
                                     {/* Info Cards */}
@@ -226,24 +262,37 @@ export default function HeroSection() {
                                         {[
                                             {
                                                 title: "Subjects Offered",
-                                                lines: ["9th & 10th: Maths", "11th & 12th: Maths & Physics"],
+                                                lines: [
+                                                    "9th & 10th: Maths",
+                                                    "11th & 12th: Maths & Physics",
+                                                ],
                                             },
                                             {
                                                 title: "Class Modes",
-                                                lines: ["Home Tuition • Small Batch Coaching"],
+                                                lines: [
+                                                    "Home Tuition • Small Batch Coaching",
+                                                ],
                                             },
                                         ].map((card, index) => (
                                             <motion.div
                                                 key={index}
                                                 initial={{ opacity: 0, y: 24 }}
                                                 animate={{ opacity: 1, y: 0 }}
-                                                transition={{ duration: 0.55, delay: 0.65 + index * 0.12 }}
+                                                transition={{
+                                                    duration: 0.55,
+                                                    delay: 0.65 + index * 0.12,
+                                                }}
                                                 whileHover={{ y: -4 }}
                                                 className="bg-white/10 rounded-2xl p-4"
                                             >
-                                                <p className="font-semibold text-base sm:text-lg">{card.title}</p>
+                                                <p className="font-semibold text-base sm:text-lg">
+                                                    {card.title}
+                                                </p>
                                                 {card.lines.map((line, i) => (
-                                                    <p key={i} className="text-blue-100 text-sm sm:text-base mt-1">
+                                                    <p
+                                                        key={i}
+                                                        className="text-blue-100 text-sm sm:text-base mt-1"
+                                                    >
                                                         {line}
                                                     </p>
                                                 ))}
@@ -259,6 +308,8 @@ export default function HeroSection() {
                                     >
                                         <Link
                                             href="/courses"
+                                            aria-label="Explore Vision Academy courses"
+                                            title="Explore Courses"
                                             className="mt-6 inline-flex items-center gap-2 text-amber-300 font-semibold hover:text-amber-200 transition"
                                         >
                                             Explore Courses
@@ -278,7 +329,9 @@ export default function HeroSection() {
                         >
                             <Target className="w-7 h-7 text-amber-500 shrink-0" />
                             <div>
-                                <p className="font-bold text-blue-900 text-base leading-none">Board Focused</p>
+                                <p className="font-bold text-blue-900 text-base leading-none">
+                                    Board Focused
+                                </p>
                                 <p className="text-xs text-gray-600 mt-1">Exam Preparation</p>
                             </div>
                         </motion.div>
@@ -291,8 +344,12 @@ export default function HeroSection() {
                         >
                             <School className="w-7 h-7 text-blue-700 shrink-0" />
                             <div>
-                                <p className="font-bold text-blue-900 text-base leading-none">Home Tuition</p>
-                                <p className="text-xs text-gray-600 mt-1">Mumbai Available</p>
+                                <p className="font-bold text-blue-900 text-base leading-none">
+                                    Home Tuition
+                                </p>
+                                <p className="text-xs text-gray-600 mt-1">
+                                    Vile Parle & Mumbai
+                                </p>
                             </div>
                         </motion.div>
                     </motion.div>

@@ -6,16 +6,16 @@ import { motion } from "framer-motion";
 
 const subjects = [
     {
-        title: "9th & 10th Maths",
-        desc: "Strong conceptual teaching, board preparation, chapter-wise practice and problem solving.",
+        title: "9th & 10th Maths Tuition",
+        desc: "Strong conceptual teaching, board preparation, chapter-wise practice and problem solving for 9th and 10th students in Vile Parle, Mumbai.",
     },
     {
-        title: "11th & 12th Maths",
-        desc: "Board-focused and concept-based teaching with regular revision, tests and doubt solving.",
+        title: "11th & 12th Maths Tuition",
+        desc: "Board-focused and concept-based teaching for 11th and 12th Maths with regular revision, tests and doubt solving by Vishal Sir.",
     },
     {
-        title: "11th & 12th Physics",
-        desc: "In-depth concept clarity, numerical problem solving, derivations and exam-oriented preparation.",
+        title: "11th & 12th Physics Tuition",
+        desc: "In-depth concept clarity, numerical problem solving, derivations and exam-oriented preparation for 11th and 12th Physics students.",
     },
 ];
 
@@ -55,7 +55,10 @@ const cardVariants = {
 
 export default function SubjectsSection() {
     return (
-        <section className="py-10 md:py-12 bg-white overflow-hidden">
+        <section
+            className="py-10 md:py-12 bg-white overflow-hidden"
+            aria-label="Subjects section"
+        >
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 {/* Heading */}
                 <motion.div
@@ -76,15 +79,16 @@ export default function SubjectsSection() {
                         variants={fadeUp}
                         className="mt-2 text-2xl md:text-3xl lg:text-4xl font-bold text-blue-950"
                     >
-                        Subjects We Specialize In
+                        Maths & Physics Tuition in Vile Parle for 9th, 10th, 11th & 12th
                     </motion.h2>
 
                     <motion.p
                         variants={fadeUp}
                         className="mt-3 text-gray-600 leading-7 text-sm sm:text-base"
                     >
-                        Structured teaching for school students with strong concept
-                        building, practice, revision and board exam preparation.
+                        Vision Academy provides structured coaching and home tuition in Vile
+                        Parle, Mumbai for school students with strong concept building,
+                        practice, revision and board exam preparation by Vishal Sir.
                     </motion.p>
                 </motion.div>
 
@@ -125,6 +129,8 @@ export default function SubjectsSection() {
                             {/* Link */}
                             <Link
                                 href="/courses"
+                                aria-label={`Learn more about ${subject.title}`}
+                                title={`Learn more about ${subject.title}`}
                                 className="mt-4 inline-flex items-center gap-2 text-blue-700 text-sm sm:text-base font-semibold hover:text-amber-500 transition"
                             >
                                 Learn More
@@ -139,6 +145,18 @@ export default function SubjectsSection() {
                         </motion.div>
                     ))}
                 </motion.div>
+
+                {/* SEO Internal Link */}
+                <div className="mt-8 text-center">
+                    <Link
+                        href="/vile-parle-home-tutor"
+                        className="text-sm sm:text-base font-medium text-blue-700 hover:text-blue-900 hover:underline"
+                        aria-label="Visit Vile Parle home tutor page"
+                        title="Vile Parle Home Tutor"
+                    >
+                        Looking for the best home tutor in Vile Parle? Explore our local tuition page
+                    </Link>
+                </div>
             </div>
         </section>
     );

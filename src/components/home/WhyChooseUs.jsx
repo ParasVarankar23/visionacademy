@@ -15,22 +15,22 @@ const whyChooseUs = [
     {
         icon: <Users className="w-7 h-7 text-blue-700" />,
         title: "Personal Attention",
-        desc: "Every student gets focused guidance based on their learning level and performance.",
+        desc: "Every student gets focused guidance based on their learning level, academic performance and subject understanding.",
     },
     {
         icon: <ClipboardCheck className="w-7 h-7 text-blue-700" />,
         title: "Regular Tests",
-        desc: "Weekly practice tests, revision sessions and performance tracking for continuous improvement.",
+        desc: "Weekly practice tests, revision sessions and performance tracking help students improve continuously.",
     },
     {
         icon: <Award className="w-7 h-7 text-blue-700" />,
         title: "Result Oriented",
-        desc: "Strong focus on board exam preparation, marks improvement and concept building.",
+        desc: "Strong focus on board exam preparation, marks improvement and concept clarity in Maths and Physics.",
     },
     {
         icon: <Clock className="w-7 h-7 text-blue-700" />,
         title: "Flexible Timings",
-        desc: "Convenient class schedules for school students with home tuition and small batch options.",
+        desc: "Convenient class schedules for school students with home tuition and small batch coaching in Vile Parle and Mumbai.",
     },
 ];
 
@@ -77,7 +77,10 @@ const cardVariants = {
 
 export default function WhyChooseUs() {
     return (
-        <section className="py-10 md:py-12 bg-blue-50 overflow-hidden">
+        <section
+            className="py-10 md:py-12 bg-blue-50 overflow-hidden"
+            aria-label="Why choose Vision Academy section"
+        >
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="grid lg:grid-cols-2 gap-8 lg:gap-10 items-start">
                     {/* Left Content */}
@@ -98,16 +101,18 @@ export default function WhyChooseUs() {
                             variants={fadeUp}
                             className="mt-2 text-2xl md:text-3xl lg:text-4xl font-bold text-blue-950 leading-tight max-w-2xl"
                         >
-                            Strong Foundation, Personal Attention & Better Academic Results
+                            Best Home Tuition in Vile Parle for Maths & Physics with Personal Attention
                         </motion.h2>
 
                         <motion.p
                             variants={fadeUp}
                             className="mt-4 text-gray-700 leading-7 text-sm sm:text-base max-w-2xl"
                         >
-                            We focus on concept clarity, regular practice and exam-oriented
-                            preparation so that students not only score better marks but also
-                            build confidence in Maths and Physics.
+                            Vision Academy provides result-oriented home tuition in Vile Parle,
+                            Mumbai for students of 9th, 10th, 11th and 12th. Vishal Sir focuses
+                            on concept clarity, regular practice and exam-oriented preparation
+                            so that students not only score better marks but also build strong
+                            confidence in Maths and Physics.
                         </motion.p>
 
                         <motion.div variants={containerVariants} className="mt-6 space-y-3">
@@ -126,6 +131,8 @@ export default function WhyChooseUs() {
                         <motion.div variants={fadeUp}>
                             <Link
                                 href="/about"
+                                aria-label="Know more about Vision Academy"
+                                title="Know More About Vision Academy"
                                 className="mt-6 inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-blue-900 text-white text-sm sm:text-base font-semibold hover:bg-blue-800 transition"
                             >
                                 Know More About Us
@@ -136,6 +143,18 @@ export default function WhyChooseUs() {
                                 >
                                     <ArrowRight className="w-4 h-4" />
                                 </motion.span>
+                            </Link>
+                        </motion.div>
+
+                        {/* SEO Internal Link */}
+                        <motion.div variants={fadeUp} className="mt-4">
+                            <Link
+                                href="/vile-parle-home-tutor"
+                                className="text-sm sm:text-base font-medium text-blue-700 hover:text-blue-900 hover:underline"
+                                aria-label="Visit Vile Parle home tutor page"
+                                title="Vile Parle Home Tutor"
+                            >
+                                Looking for a home tutor in Vile Parle? Explore our local tuition page
                             </Link>
                         </motion.div>
                     </motion.div>
