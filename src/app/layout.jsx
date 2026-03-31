@@ -16,39 +16,60 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  metadataBase: new URL("https://visionacademy-iota.vercel.app"), // change after custom domain
+  metadataBase: new URL("https://visionacademy-iota.vercel.app"),
+
   title: {
-    default: "Vision Academy Home Tutor | Maths & Physics Home Tuition in Vile Parle, Mumbai",
+    default: "Vision Academy | Best Home Tutor in Vile Parle, Mumbai",
     template: "%s | Vision Academy",
   },
+
   description:
-    "Vision Academy offers expert home tuition classes in Vile Parle, Mumbai. Vishal Sir provides Maths and Physics coaching for 9th, 10th, 11th and 12th students. Book a free demo class today.",
+    "Vision Academy provides expert home tuition and coaching in Vile Parle, Mumbai for 9th, 10th, 11th and 12th students. Maths and Physics guidance by Vishal Sir.",
+
   keywords: [
     "Vision Academy",
-    "Vision Academy Home Tutor",
-    "Vile Parle home tutor",
-    "home tutor in Vile Parle",
-    "Maths home tutor in Vile Parle",
-    "Physics home tutor in Vile Parle",
-    "9th 10th maths tuition in Vile Parle",
-    "11th 12th maths physics tuition in Vile Parle",
-    "home tuition classes in Vile Parle",
-    "private tutor in Vile Parle",
-    "Mumbai home tutor",
-    "Maths tutor in Mumbai",
-    "Physics tutor in Mumbai",
-    "Vishal Sir home tutor"
+    "best home tutor in vile parle",
+    "home tuition in vile parle",
+    "maths tutor in vile parle",
+    "physics tutor in vile parle",
+    "home tutor in mumbai",
+    "maths coaching in vile parle",
+    "physics coaching in vile parle",
+    "9th 10th maths tuition vile parle",
+    "11th 12th maths physics tuition vile parle",
+    "Vishal Sir",
+    "coaching classes in vile parle",
+    "book free demo class",
   ],
-  authors: [{ name: "Vision Academy" }],
+
+  applicationName: "Vision Academy",
   creator: "Vision Academy",
   publisher: "Vision Academy",
+
   alternates: {
     canonical: "/",
   },
+
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+
+  verification: {
+    google: "googlee77992bdd57357c6",
+  },
+
   openGraph: {
-    title: "Vision Academy Home Tutor | Best Home Tuition in Vile Parle, Mumbai",
+    title: "Vision Academy | Best Home Tutor in Vile Parle, Mumbai",
     description:
-      "Home tuition classes in Vile Parle for Maths and Physics. Vishal Sir teaches 9th, 10th, 11th and 12th students. Book a free demo class.",
+      "Expert home tuition and coaching in Vile Parle, Mumbai for 9th, 10th, 11th and 12th students. Maths and Physics guidance by Vishal Sir.",
     url: "https://visionacademy-iota.vercel.app",
     siteName: "Vision Academy",
     images: [
@@ -56,23 +77,34 @@ export const metadata = {
         url: "/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "Vision Academy Home Tutor",
+        alt: "Vision Academy - Best Home Tutor in Vile Parle, Mumbai",
       },
     ],
     locale: "en_IN",
     type: "website",
   },
+
   twitter: {
     card: "summary_large_image",
-    title: "Vision Academy Home Tutor",
+    title: "Vision Academy | Best Home Tutor in Vile Parle, Mumbai",
     description:
-      "Maths & Physics home tuition in Vile Parle, Mumbai for 9th, 10th, 11th and 12th students.",
+      "Maths & Physics home tuition in Vile Parle, Mumbai for 9th to 12th students by Vishal Sir.",
     images: ["/og-image.jpg"],
   },
-  robots: {
-    index: true,
-    follow: true,
+
+  icons: {
+    icon: "/favicon.ico",
+    shortcut: "/favicon.ico",
+    apple: "/favicon.ico",
   },
+
+  category: "education",
+};
+
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
+  themeColor: "#172554",
 };
 
 export default function RootLayout({ children }) {
@@ -83,8 +115,13 @@ export default function RootLayout({ children }) {
     >
       <body className="flex min-h-screen flex-col bg-white text-gray-900">
         <Navbar />
+
+        {/* Main Content */}
         <main className="flex-1">{children}</main>
+
         <Footer />
+
+        {/* Global Components */}
         <CookieConsent />
         {/* <FloatingChatButton /> */}
       </body>
